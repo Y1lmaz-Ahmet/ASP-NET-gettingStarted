@@ -25,10 +25,18 @@ namespace ASP_NET_gettingStarted.Controllers
             return _countryRepository.GetAll();
         }
         //GET: api/country/{id}
-        [HttpGet("{id}",Name ="Get")]
-        public Country Get(int id)
+        [HttpGet("{id}",Name ="GET")]
+        public ActionResult<Country> Get(int id)
         {
-            return _countryRepository.GetCountry(id);
+            try
+            {
+                return Ok(_countryRepository.GetCountry(id));
+            }
+            catch(CountryException ex)
+            {
+                
+                return NotFound(ex.Message);
+            }
         }
     }
 }
