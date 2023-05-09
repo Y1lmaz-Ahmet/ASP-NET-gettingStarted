@@ -27,6 +27,19 @@
             }
         }
 
+        public IEnumerable<Country> GetAll(string continent = null)
+        {
+            if (continent != null)
+            {
+                return data.Values.Where(x => x.Continent == continent);
+            }
+            else
+            {
+                return data.Values;
+            }
+        }
+
+
         public IEnumerable<Country> GetAll()
         {
             return data.Values;

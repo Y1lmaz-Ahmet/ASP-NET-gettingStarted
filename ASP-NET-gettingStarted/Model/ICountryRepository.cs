@@ -7,8 +7,9 @@
 
         void AddCountry(Country country);
         Country GetCountry(int id);
-        IEnumerable<Country> GetAll();
+        IEnumerable<Country> GetAll(string continent);
         void RemoveCountry(Country country);
         void UpdateCountry(Country country);
+        IEnumerable<Country> GetAll();
     }
 }

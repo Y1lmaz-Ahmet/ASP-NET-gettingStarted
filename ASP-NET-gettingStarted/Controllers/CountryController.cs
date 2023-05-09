@@ -20,13 +20,21 @@ namespace ASP_NET_gettingStarted.Controllers
 
         //GET: api/Country
         [HttpGet]
-        public IEnumerable<Country> Get()
+        [HttpHead]
+        //[FromQuery] string continent = null
+        //code hierboven zorgt ervoor dat als de continent niet ingegeven wordt
+        //dat de else statement werkt en alle continenten gegeven wordt.
+        public IEnumerable<Country> GetAllCountries([FromQuery] string continent = null)
         {
-            return _countryRepository.GetAll();
+            if (!string.IsNullOrWhiteSpace(continent))
+                return _countryRepository.GetAll(continent);
+            else
+                return _countryRepository.GetAll();
         }
         //GET: api/country/{id}
-        [HttpGet("{id}",Name ="GET")]
-        public ActionResult<Country> Get(int id)
+        [HttpGet("{id}")]
+        [HttpHead("{id}")]
+        public ActionResult<Country> GetCountryById(int id)
         {
             try
             {
@@ -38,5 +46,7 @@ namespace ASP_NET_gettingStarted.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        
     }
 }
