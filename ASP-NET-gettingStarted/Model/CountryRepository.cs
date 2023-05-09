@@ -34,8 +34,8 @@
 
         public Country GetCountry(int id)
         {
-            if (data.ContainsKey(id))
-                return data[id];
+            if (data.TryGetValue(id, out Country value))
+                return value;
             else
                 throw new CountryException("[GetCountry]: Country doesn't exist");
             

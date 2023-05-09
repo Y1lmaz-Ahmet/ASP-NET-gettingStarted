@@ -17,5 +17,18 @@ namespace ASP_NET_gettingStarted.Controllers
         {
             _countryRepository = countryRepository;
         }
+
+        //GET: api/Country
+        [HttpGet]
+        public IEnumerable<Country> Get()
+        {
+            return _countryRepository.GetAll();
+        }
+        //GET: api/country/{id}
+        [HttpGet("{id}",Name ="Get")]
+        public Country Get(int id)
+        {
+            return _countryRepository.GetCountry(id);
+        }
     }
 }
