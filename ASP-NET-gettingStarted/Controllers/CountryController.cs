@@ -7,5 +7,6 @@ namespace ASP_NET_gettingStarted.Controllers
     [ApiController]
     public class CountryController : ControllerBase
     {
+
     }
 }
