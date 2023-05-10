@@ -47,6 +47,20 @@ namespace ASP_NET_gettingStarted.Controllers
             }
         }
 
-        
+        [HttpPost]
+        public IActionResult AddCountry([FromBody] Country country)
+        {
+            try
+            {
+                _countryRepository.AddCountry(country);
+               return CreatedAtAction(nameof(GetAllCountries),new {id = country.Id}, country);
+            }
+            catch (CountryException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }

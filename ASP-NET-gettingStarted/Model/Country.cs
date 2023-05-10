@@ -23,6 +23,11 @@
             Capital = capital;
             Continent = continent;
         }
+
+        //leeg class zodat POST method in controller werkt, anders error : parameterless...
+        public Country()
+        {
+        }
         #endregion
     }
 }
