@@ -1,1 +1,30 @@
-De CountryController is een ASP.NET Core web API-controller die CRUD (Create, Read, Update, Delete) -bewerkingen mogelijk maakt voor een land object. Het bevat acties die verantwoordelijk zijn voor het ophalen van alle landen, ophalen van een specifiek land op basis van het ID, het toevoegen van een nieuw land, het bijwerken van een bestaand land en het verwijderen van een land. Het maakt gebruik van de CountryRepository die in de constructor van de controller wordt geïnjecteerd. Het bevat ook logica om de API te beveiligen tegen onjuiste invoer en om een gepaste foutmelding terug te sturen naar de cliënt. De acties ondersteunen HTTP-methoden zoals GET, POST, PUT en DELETE, die worden gebruikt om te communiceren met de server.
+## Projectnaam
+
+Beschrijving van het project.
+
+### Hoe te gebruiken
+
+- Instructies om het project te downloaden en te installeren.
+- Instructies om het project te gebruiken.
+
+### API-methoden
+
+#### `GetAllCountries([FromQuery] string continent = null)`
+
+Deze methode haalt een lijst op van alle landen die in de database zijn opgeslagen. De parameter `continent` is optioneel en kan worden gebruikt om alleen landen van een specifiek continent op te halen.
+
+#### `GetCountryById(int id)`
+
+Deze methode haalt een enkel land op op basis van het `id`-nummer dat als parameter wordt meegegeven. Als het opgegeven `id`-nummer niet overeenkomt met een land in de database, wordt er een `NotFound`-statuscode geretourneerd.
+
+#### `AddCountry([FromBody] Country country)`
+
+Deze methode voegt een nieuw land toe aan de database. Als er een fout optreedt tijdens het toevoegen van het land, wordt er een `BadRequest`-statuscode geretourneerd met een bijbehorend foutbericht.
+
+#### `DeleteCountry(int id)`
+
+Deze methode verwijdert een land uit de database op basis van het `id`-nummer dat als parameter wordt meegegeven. Als het opgegeven `id`-nummer niet overeenkomt met een land in de database, wordt er een `Ok`-statuscode geretourneerd met een bijbehorend foutbericht.
+
+#### `Put(int id, [FromBody] Country country)`
+
+Deze methode werkt het land bij op basis van het `id`-nummer dat als parameter wordt meegegeven en de gegevens die zijn opgegeven in de `Country`-object. Als het opgegeven `id`-nummer niet overeenkomt met een land in de database, wordt er een `BadRequest`-statuscode geretourneerd met een bijbehorend foutbericht. Als er een fout optreedt tijdens het bijwerken van het land, wordt er een `NoContent`-statuscode geretourneerd.
