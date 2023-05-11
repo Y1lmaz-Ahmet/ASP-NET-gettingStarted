@@ -1,4 +1,4 @@
-## Projectnaam
+## ASP.NET Core Getting Started Project
 
 Beschrijving van het project.
 
