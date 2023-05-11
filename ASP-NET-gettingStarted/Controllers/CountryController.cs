@@ -70,6 +70,31 @@ namespace ASP_NET_gettingStarted.Controllers
             _countryRepository.RemoveCountry(_countryRepository.GetCountry(id));
             return Ok("[DeleteCountry]: country has been deleted");
         }
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Country country)
+        {
+            if (country == null)
+            {
+                return BadRequest("The country object is null.");
+            }
+
+            if (country.Id != id)
+            {
+                return BadRequest("The specified country ID does not match the provided ID.");
+            }
+
+            var existingCountry = _countryRepository.GetCountry(id);
+
+            if (existingCountry == null)
+            {
+                _countryRepository.AddCountry(country);
+                return CreatedAtAction(nameof(GetAllCountries), new { id = country.Id }, country);
+            }
+
+            _countryRepository.UpdateCountry(country);
+            return new NoContentResult();
+        }
+
 
     }
 }
