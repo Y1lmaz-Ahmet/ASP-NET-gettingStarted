@@ -27,6 +27,12 @@
             }
         }
 
+        public bool ExistsCountry(int id)
+        {
+            if (data.ContainsKey(id)) return true;
+            else return false;
+        }
+
         public IEnumerable<Country> GetAll(string continent = null)
         {
             if (continent != null)

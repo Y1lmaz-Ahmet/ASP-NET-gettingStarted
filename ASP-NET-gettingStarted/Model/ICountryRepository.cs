@@ -10,6 +10,7 @@
         IEnumerable<Country> GetAll(string continent);
         void RemoveCountry(Country country);
         void UpdateCountry(Country country);
+        bool ExistsCountry(int id);
         IEnumerable<Country> GetAll();
     }
 }

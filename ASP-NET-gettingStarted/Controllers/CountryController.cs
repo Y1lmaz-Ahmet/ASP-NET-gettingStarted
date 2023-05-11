@@ -60,7 +60,16 @@ namespace ASP_NET_gettingStarted.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCountry(int id)
+        {
+            if (!_countryRepository.ExistsCountry(id))
+            {
+                return Ok("[DeleteCountry]: country doesn't exist");
+            }
+            _countryRepository.RemoveCountry(_countryRepository.GetCountry(id));
+            return Ok("[DeleteCountry]: country has been deleted");
+        }
 
     }
 }
