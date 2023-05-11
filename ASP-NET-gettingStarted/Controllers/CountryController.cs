@@ -17,9 +17,20 @@ namespace ASP_NET_gettingStarted.Controllers
         {
             _countryRepository = countryRepository;
         }
+        //[HttpGet("start")]
+        [HttpGet("[action]")]
+        public IActionResult Start()
+        {
+            return Ok(_countryRepository.GetAll());
+        }
+        [HttpGet("[action]/{id:int=3}")]
+        public IActionResult GetCountryByCountryId(int id)
+        {
+            return Ok( _countryRepository.GetCountry(id));
+        }
 
         //GET: api/Country
-        [HttpGet]
+        [HttpGet("[action]")]
         [HttpHead]
         //[FromQuery] string continent = null
         //code hierboven zorgt ervoor dat als de continent niet ingegeven wordt
