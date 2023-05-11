@@ -24,7 +24,7 @@
             Continent = continent;
         }
 
-        //leeg class zodat POST method in controller werkt, anders error : parameterless...
+        //leeg constructor zodat POST method in controller werkt, anders error : parameterless...
         public Country()
         {
         }
