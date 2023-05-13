@@ -74,12 +74,20 @@ namespace ASP_NET_gettingStarted.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteCountry(int id)
         {
-            if (!_countryRepository.ExistsCountry(id))
+            try
             {
-                return Ok("[DeleteCountry]: country doesn't exist");
+                if (!_countryRepository.ExistsCountry(id))
+                {
+                    return Ok("[DeleteCountry]: country doesn't exist");
+                }
+                _countryRepository.RemoveCountry(_countryRepository.GetCountry(id));
+                return Ok("[DeleteCountry]: country has been deleted.");
+
             }
-            _countryRepository.RemoveCountry(_countryRepository.GetCountry(id));
-            return Ok("[DeleteCountry]: country has been deleted.");
+            catch(CountryException ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Country country)
